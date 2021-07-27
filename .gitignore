@@ -1,0 +1,9 @@
+client/node_modules
+server_folder/node_modules
+things-to-do.txt
+what-I-learnt.txt
+server_folder/sessions
+
+### env files ###
+server_folder/.env
+client_folder/.env
