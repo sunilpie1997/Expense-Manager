@@ -1,4 +1,6 @@
 import React,{ useReducer, useEffect} from 'react';
+import { apolloClient } from '../../graphql/apollo-client';
+
 
 export const AuthStateContext = React.createContext();
 export const AuthUpdaterContext = React.createContext();
@@ -15,7 +17,12 @@ export const authReducer = (state, action) => {
   
       case 'logout':
         localStorage.clear();
+        apolloClient.clearStore()
+        .then(() => console.log("cache cleared"))
+        .catch((err) => console.log(err));
+        
         return { ...state, isLoggedIn:false, isLoading:false };
+        
     }
   }
 

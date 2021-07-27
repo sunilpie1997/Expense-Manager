@@ -145,9 +145,6 @@ const ExpenseType = new GraphQLObjectType({
         description: { 
             type: GraphQLString 
         },
-        // category: { 
-        //     type: GraphQLNonNull(GraphQLString) 
-        // },
         category: { 
             type: GraphQLNonNull(CategoryEnumType) 
         },
@@ -179,8 +176,6 @@ const ReportPerCategory = new GraphQLObjectType({
     fields: () => ({
         _id: {
             type: GraphQLNonNull(CategoryEnumType)
-            // type: GraphQLNonNull(GraphQLString)
-
         },
         expense: {
             type: GraphQLNonNull(GraphQLInt)
@@ -264,7 +259,6 @@ const RootMutationType = new GraphQLObjectType({
                 amount: { type: GraphQLNonNull(GraphQLInt) },
                 currency: { type: GraphQLNonNull(GraphQLString) },
                 description: { type: GraphQLString },
-                // category: { type: GraphQLNonNull(GraphQLString) },
                 category: { type: GraphQLNonNull(CategoryEnumType) },
                 dateTime: { type: GraphQLNonNull(DateType) },
             },
@@ -347,6 +341,21 @@ const RootMutationType = new GraphQLObjectType({
                 }
             }
         },
+        logout: {
+            type: GraphQLNonNull(GraphQLString),
+            description: 'logout user',
+            resolve: async (parent, args, req) => {
+                try
+                {
+                    req.session.destroy();
+                    return "logged out successfully";
+                }
+                catch(err)
+                {
+                    throw err;
+                }
+            }
+        },
         //PUT
         editExpense: {
             type: ExpenseType,
@@ -356,7 +365,6 @@ const RootMutationType = new GraphQLObjectType({
                 amount: { type: GraphQLNonNull(GraphQLInt) },
                 currency: { type: GraphQLNonNull(GraphQLString) },
                 description: { type: GraphQLString },
-                // category: { type: GraphQLNonNull(GraphQLString) },
                 category: { type: GraphQLNonNull(CategoryEnumType) },
                 dateTime: { type: GraphQLNonNull(DateType) },
             },

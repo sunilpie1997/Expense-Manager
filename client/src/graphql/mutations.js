@@ -12,5 +12,11 @@ mutation Register($email: String!, $password: String!, $firstName: String!, $las
 }
 `;
 
+const LOGOUT = gql`
+mutation Logout {
+    logout
+}
+`;
 
-export { LOGIN, REGISTER };
+
+export { LOGIN, REGISTER, LOGOUT };
