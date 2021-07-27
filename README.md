@@ -1,6 +1,14 @@
-##### credits #####
+##### Expense Manager #####
 
-1.  https://github.com/academind/yt-graphql-react-event-booking-api/tree/10-auth-middleware
-    https://www.youtube.com/watch?v=uk9YHJsOjVo
+1. A tool to manage your monthly expenses.
 
-2. https://www.youtube.com/watch?v=RvfUrzMRlJ8
+##### Features #####
+
+1. Backend - GraphQL, Express
+2. Frontend - React
+
+##### In progress #####
+
+1. implement functionality to add, update and delete expense on frontend (React).
+
+   
