@@ -4,13 +4,14 @@ import { DataStoreProvider } from '../context/data-store-context';
 import Dashboard from './dashboard';
 import ExpenseList from './expense-list';
 import ExpenseReport from './expense-report';
+import Box from '@material-ui/core/Box';
 
 const HomeComponent = () => {
 
     let { path, url } = useRouteMatch();
 
     return (
-        <React.Fragment>
+        <Box>
             <ul>
                 <li>
                     <Link to={url}>Dashboard</Link>
@@ -22,6 +23,7 @@ const HomeComponent = () => {
                     <Link to={`${url}/report`}>ExpenseReport</Link>
                 </li>
             </ul>
+        
             <DataStoreProvider>
                 <Switch>    
                     <Route exact path={path} render={ props => <Dashboard {...props} /> } />
@@ -29,7 +31,7 @@ const HomeComponent = () => {
                     <Route exact path={`${path}/report`} render={ props => <ExpenseReport {...props} /> } />
                 </Switch>
             </DataStoreProvider>
-        </React.Fragment>
+        </Box>
     )
     
 }

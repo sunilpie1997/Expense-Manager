@@ -2,6 +2,7 @@
 import React, {useContext} from "react";
 import { Redirect, Route } from "react-router-dom";
 import { AuthStateContext } from "../context/auth-context";
+import LoadingComponent from "../loading";
 
 function LoginRoute({ component: Component, ...restOfProps }) {
   
@@ -10,7 +11,7 @@ function LoginRoute({ component: Component, ...restOfProps }) {
     if(isLoading)
     {
         return (
-            <h1>Loading ...</h1>
+            <LoadingComponent/>
         )
     }
     else

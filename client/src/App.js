@@ -1,10 +1,6 @@
 import React from 'react';
 import {
-  ApolloClient,
-  InMemoryCache,
   ApolloProvider,
-  useQuery,
-  gql
 } from "@apollo/client";
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { apolloClient } from './graphql/apollo-client';
@@ -15,11 +11,12 @@ import MatchNotFound from './components/match-not-found';
 import Login from './components/authentication/login';
 import './App.css';
 import HomeComponent from './components/home_folder/home';
+import Box from '@material-ui/core/Box';
 
 
 const App = () => {
   return (
-    <div className="App">
+    <Box className="App">
       <ApolloProvider client={apolloClient}>
         <AuthProvider>
 
@@ -35,7 +32,7 @@ const App = () => {
         </AuthProvider>
       </ApolloProvider>
      
-    </div>
+    </Box>
   );
 }
 

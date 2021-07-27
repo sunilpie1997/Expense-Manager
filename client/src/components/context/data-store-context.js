@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { GET_USER } from '../../graphql/queries';
 import { useQuery } from '@apollo/client';
 import LoadingComponent from '../loading';
-
+import Typography from '@material-ui/core/Typography';
 
 export const DataStoreContext = React.createContext();
 
@@ -34,7 +34,7 @@ export const DataStoreProvider = ({children}) => {
 
     if(loading) return <LoadingComponent/>
 
-    if(error) return <h1>{error}</h1>
+    if(error) return <Typography variant="h5" color="secondary">{error}</Typography>
  
     return (
         <React.Fragment>

@@ -1,13 +1,16 @@
 import React from 'react';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 
 const ReportPerCategory = (props) => {
 
     const {_id, expense} = props.perCategory;
 
     return (
-        <ul>
-            <li>{`${_id}: ${expense}`}</li>        
-        </ul>
+        <TableRow>
+            <TableCell>{_id}</TableCell>
+            <TableCell>{expense}</TableCell>
+        </TableRow>
     ) 
 }
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 
 const ExpenseDetail = (props) => {
 
@@ -10,15 +12,12 @@ const ExpenseDetail = (props) => {
         return `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
     }
     return (
-        <ul>
-            <li>{category}</li>
-            <li>{`${currency} ${amount}`}</li>
-            <li>{getDateInFormat(dateTime)}</li>
-            <li>{amount}</li>
-            
-            { description && <li>{description}</li> }
-
-        </ul>
+        <TableRow>
+            <TableCell>{category}</TableCell>
+            <TableCell>{`${currency} ${amount}`}</TableCell>
+            <TableCell>{getDateInFormat(dateTime)}</TableCell>
+            <TableCell>{description ? description : 'not added'}</TableCell>
+      </TableRow>
     ) 
 }
 
