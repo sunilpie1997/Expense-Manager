@@ -15,11 +15,13 @@ const {
     GraphQLList,
     GraphQLInt,
     GraphQLBoolean,
+    GraphQLEnumType,
 } = require("graphql");
 const validateObjectId = require("./utils/validate-object-id");
 const User = require("./models/user");
 const Expense = require("./models/expense");
 const DateType = require("./custom_graphql_type/date-type");
+const CategoryEnumType = require("./custom_graphql_type/category-enum");
 const getSessionDetails = require("./utils/get-session-details");
 const getDateLimit = require("./utils/get-date-limit");
 const { sanitizePerWeekExpense, sanitizePerCategoryExpense } = require("./utils/sanitize-report-data");
@@ -143,8 +145,11 @@ const ExpenseType = new GraphQLObjectType({
         description: { 
             type: GraphQLString 
         },
+        // category: { 
+        //     type: GraphQLNonNull(GraphQLString) 
+        // },
         category: { 
-            type: GraphQLNonNull(GraphQLString) 
+            type: GraphQLNonNull(CategoryEnumType) 
         },
         dateTime: { 
             type: GraphQLNonNull(DateType) 
@@ -173,7 +178,9 @@ const ReportPerCategory = new GraphQLObjectType({
     description: 'expense report per category in current month',
     fields: () => ({
         _id: {
-            type: GraphQLNonNull(GraphQLString)
+            type: GraphQLNonNull(CategoryEnumType)
+            // type: GraphQLNonNull(GraphQLString)
+
         },
         expense: {
             type: GraphQLNonNull(GraphQLInt)
@@ -257,7 +264,8 @@ const RootMutationType = new GraphQLObjectType({
                 amount: { type: GraphQLNonNull(GraphQLInt) },
                 currency: { type: GraphQLNonNull(GraphQLString) },
                 description: { type: GraphQLString },
-                category: { type: GraphQLNonNull(GraphQLString) },
+                // category: { type: GraphQLNonNull(GraphQLString) },
+                category: { type: GraphQLNonNull(CategoryEnumType) },
                 dateTime: { type: GraphQLNonNull(DateType) },
             },
             resolve: async (parent, args, req) => {
@@ -348,7 +356,8 @@ const RootMutationType = new GraphQLObjectType({
                 amount: { type: GraphQLNonNull(GraphQLInt) },
                 currency: { type: GraphQLNonNull(GraphQLString) },
                 description: { type: GraphQLString },
-                category: { type: GraphQLNonNull(GraphQLString) },
+                // category: { type: GraphQLNonNull(GraphQLString) },
+                category: { type: GraphQLNonNull(CategoryEnumType) },
                 dateTime: { type: GraphQLNonNull(DateType) },
             },
             resolve: async (parent, args, req) => {
