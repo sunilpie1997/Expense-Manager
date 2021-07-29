@@ -8,7 +8,7 @@ const ReportPerCategory = (props) => {
 
     return (
         <TableRow>
-            <TableCell>{_id}</TableCell>
+            <TableCell>{_id.toLowerCase()}</TableCell>
             <TableCell>{expense}</TableCell>
         </TableRow>
     ) 

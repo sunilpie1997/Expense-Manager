@@ -50,8 +50,20 @@ const useStyles = makeStyles({
     flexDirection:'column',
     alignContent:'center',
   },
-  
 
+  nav_item: {
+    margin: '0em 1em',
+    color: "white",
+    textDecoration:'none'
+  },
+
+  box_margin:{
+    marginTop:'2em',
+  },
+  error_text:{
+    color:"#E40017"
+  }
+    
 });
 
 export { useStyles};

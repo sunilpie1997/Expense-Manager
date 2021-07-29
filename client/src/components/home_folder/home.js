@@ -2,21 +2,26 @@ import React, {useContext, useState} from 'react';
 import { Switch, Route, useRouteMatch, Link} from 'react-router-dom';
 import { DataStoreProvider } from '../context/data-store-context';
 import Dashboard from './dashboard';
-import ExpenseList from './expense-list';
-import ExpenseReport from './expense-report';
+import ExpenseList from './expense/expense-list';
+import ExpenseReport from './report/expense-report';
 import Box from '@material-ui/core/Box';
 import Fab from '@material-ui/core/Fab';
 import {AuthUpdaterContext} from '../context/auth-context';
 import {LOGOUT} from '../../graphql/mutations';
 import { useMutation } from '@apollo/client';
 import Typography from '@material-ui/core/Typography';
-
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import { useStyles } from '../../styles/material-styles';
+import Button from '@material-ui/core/Button';
 
 const HomeComponent = () => {
 
     let { path, url } = useRouteMatch();
     const authDispatch = useContext(AuthUpdaterContext);
     const [error, setError] = useState('');
+
+    const classes = useStyles();
 
     const onLogoutSuccess = () => {
         authDispatch('logout');
@@ -37,23 +42,27 @@ const HomeComponent = () => {
 
     return (
         <Box>
-            <ul>
-                <li>
-                    <Link to={url}>Dashboard</Link>
-                </li>
-                <li>
-                    <Link to={`${url}/expenses`}>ExpenseList</Link>
-                </li>
-                <li>
-                    <Link to={`${url}/report`}>ExpenseReport</Link>
-                </li>
-                <li>
-                    <Fab size="small" variant="extended" color="secondary" onClick={logoutUser}>Logout</Fab>
-                </li>
+            <AppBar position="static">
+                <Toolbar>
+                    <Button color="inherit">
+                        <Link to={url} className={classes.nav_item}>Dashboard</Link>
+                    </Button>
 
-            </ul>
-        
-            { error ?  <Typography variant="h5" color="secondary">{error}</Typography> : ''}
+                    <Button color="inherit">
+                        <Link to={`${url}/expenses`} className={classes.nav_item}>Expenses</Link>
+                    </Button>
+
+                    <Button color="inherit">
+                        <Link to={`${url}/report`} className={classes.nav_item}>Report</Link>
+                    </Button>
+                    
+                    <Button onClick={logoutUser} color="inherit" style={{marginLeft:'auto'}}>
+                        Logout
+                    </Button>
+                </Toolbar>
+            </AppBar>
+
+            { error ?  <Typography variant="body1" className={classes.error_text}>{error}</Typography> : ''}
 
             <DataStoreProvider>
                 <Switch>    

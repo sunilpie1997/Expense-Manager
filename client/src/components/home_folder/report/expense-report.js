@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { DataStoreContext } from '../context/data-store-context';
+import { DataStoreContext } from '../../context/data-store-context';
 import ReportPerWeek from './report-per-week';
 import ReportPerCategory from './report-per-category';
 import Paper from '@material-ui/core/Paper';
@@ -10,7 +10,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Box from '@material-ui/core/Box';
-import { useStyles } from '../../styles/style';
+import { useStyles } from '../../../styles/material-styles';
+import Typography from '@material-ui/core/Typography';
 
 const ExpenseReport = () => {
 
@@ -20,7 +21,9 @@ const ExpenseReport = () => {
     const classes = useStyles();
 
     return (
-        <Box>
+        <Box className={classes.box_margin}>
+            <Typography variant="h6" color="primary">Month based expense report</Typography>
+
             {/* per week */}
             <Box className={classes.report_table_box}>
                 <TableContainer component={Paper} className={classes.report_table}>

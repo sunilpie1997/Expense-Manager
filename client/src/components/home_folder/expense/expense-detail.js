@@ -13,7 +13,7 @@ const ExpenseDetail = (props) => {
     }
     return (
         <TableRow>
-            <TableCell>{category}</TableCell>
+            <TableCell>{category.toLowerCase()}</TableCell>
             <TableCell>{`${currency} ${amount}`}</TableCell>
             <TableCell>{getDateInFormat(dateTime)}</TableCell>
             <TableCell>{description ? description : 'not added'}</TableCell>

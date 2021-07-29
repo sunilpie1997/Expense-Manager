@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { DataStoreContext } from '../context/data-store-context';
+import { DataStoreContext } from '../../context/data-store-context';
 import ExpenseDetail from './expense-detail';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,8 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box'
-import { useStyles } from '../../styles/style';
-
+import { useStyles } from '../../../styles/material-styles';
+import Typography from '@material-ui/core/Typography';
 
 const ExpenseList = () => {
     
@@ -18,7 +18,9 @@ const ExpenseList = () => {
     const classes = useStyles();
     
     return (
-        <Box>
+        <Box className={classes.box_margin}>
+            <Typography variant="h6" color="primary">List of your expenses</Typography>
+
             <TableContainer component={Paper} className={classes.table_margin}>
                 <Table aria-label="simple table">
                     <TableHead>

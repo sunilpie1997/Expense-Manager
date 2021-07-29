@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router-dom";
 import { AuthStateContext } from "../context/auth-context";
 import LoadingComponent from "../loading";
 
-function LoginRoute({ component: Component, ...restOfProps }) {
+function AuthRoute({ component: Component, ...restOfProps }) {
   
     const { isLoggedIn, isLoading } = useContext(AuthStateContext);
     
@@ -29,4 +29,4 @@ function LoginRoute({ component: Component, ...restOfProps }) {
 
 }
 
-export default LoginRoute;
+export default AuthRoute;

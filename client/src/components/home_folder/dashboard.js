@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import { DataStoreContext } from '../context/data-store-context';
-import ExpenseDetail from './expense-detail';
+import ExpenseDetail from './expense/expense-detail';
 import Box from '@material-ui/core/Box'
-import { useStyles } from '../../styles/style';
+import { useStyles } from '../../styles/material-styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
@@ -34,12 +34,14 @@ const Dashboard = () => {
         <React.Fragment>
 
             <Box className={classes.intro_box}>  
-                <Typography variant="h6" color="primary">{`Hi ${firstName} ${lastName ? lastName: ''}`}</Typography>
-                <Typography variant="h6" color="primary">{email}</Typography>
+                <Typography variant="h6" color="primary">
+                    Welcome &nbsp;{`${firstName} ${lastName ? lastName: ''}`}
+                </Typography>
+                <Typography variant="subtitle2" color="primary">{email}</Typography>
             </Box>
 
             <Box className={classes.intro_box}>
-                <Typography variant="h6" color="primary">Total Spending : {report.total}</Typography>
+                <Typography variant="h6" color="primary">Total Spending : {report.total}/m</Typography>
             </Box> 
             
             <Box>

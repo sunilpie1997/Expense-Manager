@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 const LoadingComponent = () => {
 
     return (
-        <Box style={{margin:'auto'}}>
+        <Box style={{margin:'5em 0em'}}>
             
             <CircularProgress color="secondary" />
 
